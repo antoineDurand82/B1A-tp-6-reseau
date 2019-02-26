@@ -1,0 +1,26 @@
+{
+    "auto_close": true,
+    "auto_open": false,
+    "auto_start": false,
+    "grid_size": 75,
+    "name": "tp6",
+    "project_id": "dd4c2578-c4c0-4e5b-9af7-1ac9e443ca91",
+    "revision": 8,
+    "scene_height": 1000,
+    "scene_width": 2000,
+    "show_grid": false,
+    "show_interface_labels": false,
+    "show_layers": false,
+    "snap_to_grid": false,
+    "supplier": null,
+    "topology": {
+        "computes": [],
+        "drawings": [],
+        "links": [],
+        "nodes": []
+    },
+    "type": "topology",
+    "variables": null,
+    "version": "2.1.12",
+    "zoom": 100
+}
