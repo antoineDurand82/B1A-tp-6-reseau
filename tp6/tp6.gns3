@@ -19,7 +19,7 @@
             {
                 "drawing_id": "2fb8e7e6-ce34-475c-bce0-e7ca937f8004",
                 "rotation": 0,
-                "svg": "<svg height=\"1016\" width=\"606\"><rect fill=\"#55ffff\" fill-opacity=\"0.27450980392156865\" height=\"1016\" width=\"606\" /></svg>",
+                "svg": "<svg height=\"690\" width=\"606\"><rect fill=\"#55ffff\" fill-opacity=\"0.27450980392156865\" height=\"690\" width=\"606\" /></svg>",
                 "x": -946,
                 "y": -552,
                 "z": -1
@@ -27,15 +27,15 @@
             {
                 "drawing_id": "2e76c90d-faa1-4942-8f0c-6bac7d7a87b1",
                 "rotation": 0,
-                "svg": "<svg height=\"1117\" width=\"320\"><rect fill=\"#ff5053\" fill-opacity=\"0.27450980392156865\" height=\"1117\" width=\"320\" /></svg>",
-                "x": -339,
-                "y": -561,
+                "svg": "<svg height=\"665\" width=\"320\"><rect fill=\"#ff5053\" fill-opacity=\"0.27450980392156865\" height=\"665\" width=\"320\" /></svg>",
+                "x": -341,
+                "y": -531,
                 "z": -1
             },
             {
                 "drawing_id": "a24426bc-d34f-4198-86be-2877e32c96ac",
                 "rotation": 0,
-                "svg": "<svg height=\"1002\" width=\"781\"><rect fill=\"#11ff20\" fill-opacity=\"0.27450980392156865\" height=\"1002\" width=\"781\" /></svg>",
+                "svg": "<svg height=\"668\" width=\"781\"><rect fill=\"#11ff20\" fill-opacity=\"0.27450980392156865\" height=\"668\" width=\"781\" /></svg>",
                 "x": -19,
                 "y": -532,
                 "z": -1
@@ -375,6 +375,37 @@
                     }
                 ],
                 "suspend": false
+            },
+            {
+                "filters": {},
+                "link_id": "baa6f867-16ea-43ae-8c51-1519b367d5c8",
+                "nodes": [
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "e0/2",
+                            "x": 32,
+                            "y": 61
+                        },
+                        "node_id": "d2ed3bff-133f-4c58-b4c9-0fb7825ac6d2",
+                        "port_number": 2
+                    },
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "nat0",
+                            "x": 79,
+                            "y": -4
+                        },
+                        "node_id": "022567a4-7097-44e6-8855-db7eccee7dd5",
+                        "port_number": 0
+                    }
+                ],
+                "suspend": false
             }
         ],
         "nodes": [
@@ -703,7 +734,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5003,
+                "console": 5000,
                 "console_type": "telnet",
                 "first_port_name": null,
                 "height": 32,
@@ -779,7 +810,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5004,
+                "console": 5003,
                 "console_type": "telnet",
                 "first_port_name": null,
                 "height": 32,
@@ -855,7 +886,7 @@
             },
             {
                 "compute_id": "local",
-                "console": 5000,
+                "console": 5004,
                 "console_type": "telnet",
                 "first_port_name": "",
                 "height": 59,
@@ -885,6 +916,40 @@
                 "width": 65,
                 "x": 584,
                 "y": -212,
+                "z": 0
+            },
+            {
+                "compute_id": "vm",
+                "console": null,
+                "console_type": null,
+                "first_port_name": null,
+                "height": 71,
+                "label": {
+                    "rotation": 0,
+                    "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                    "text": "NAT-3",
+                    "x": 56,
+                    "y": -25
+                },
+                "name": "NAT-3",
+                "node_id": "022567a4-7097-44e6-8855-db7eccee7dd5",
+                "node_type": "nat",
+                "port_name_format": "Ethernet{0}",
+                "port_segment_size": 0,
+                "properties": {
+                    "ports_mapping": [
+                        {
+                            "interface": "virbr0",
+                            "name": "nat0",
+                            "port_number": 0,
+                            "type": "ethernet"
+                        }
+                    ]
+                },
+                "symbol": ":/symbols/cloud.svg",
+                "width": 159,
+                "x": -276,
+                "y": 203,
                 "z": 0
             }
         ]
