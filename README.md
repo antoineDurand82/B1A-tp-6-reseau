@@ -203,7 +203,7 @@ PING client1.tp6.b1 (10.6.201.50) 56(84) bytes of data.
 ```
 
 
-et en plus comme tu me l'as indiqué, mon DHCP donner l'adresse du DNS:
+et en plus comme tu me l'as indiqué, mon DHCP donne l'adresse du DNS:
 ```
 subnet 10.6.201.0 netmask 255.255.255.0 {
   range 10.6.201.50 10.6.201.70;
@@ -216,52 +216,26 @@ subnet 10.6.201.0 netmask 255.255.255.0 {
 
 ## 5. Serveur NTP
 
-Idem ici, NTP, c'est du service d'infra pour nos serveurs ! Alors ce sera sur `server1.tp6.b1` encore.  
+Juste histoire de mettre sur le MD, je relance tout, j'oublie pas de start nginx/named  sur server1 et je start le dhcpd sur client2 et je start chronyd et les 2 lignes de commandes suivantes sur toutes mes VM
 
-Tout ça serait sur plusieurs machines dans un cas réel. Rien ne vous empêche d'en créer d'autres pour tester si votre machine vous le permet.
+  * `sudo chronyc sources`
+  * `sudo chronyc tracking`
 
-### Présentation
-
-NTP (pour *Network Time Protocol*) est le protocole (= la langue) que l'on utilise pour permettr eà plusieurs serveurs d'être synchronisés au niveau de la date et de l'heure. Le problème est loin d'être trivial lorsque l'on s'y intéresse de près.  
-
-Il existe des [serveurs NTP publics](https://www.pool.ntp.org), sur lesquels n'importe qui peut se synchroniser. Ils servent souvent de référence.  
-
-Dans notre cas :
-* on va demander à `server1.tp6.b1` de se synchroniser sur un serveur externe
-* et on va demander à toutes les autres machines clientes de se synchroniser sur `server1.tp6.b1`
-
-Dernier détail : sur CentOS, le service qui gère NTP s'appelle `chrony` :
-* le démon systemd s'appelle `chronyd`
-  * donc `sudo systemctl restart chronyd` par exemple
-* la commande pour avoir des infos est `chronyc`
-  * `chronyc sources` pour voir les serveurs pris en compte par `cronyd`
-  * `chronyc tracking` pour voir l'état de la synchronisation
-* la configuration se trouve dans `/etc/chrony.conf`
-* présent par défaut sur CentOS
-
-### Mise en place
-
-Sur `server1.tp6.b1` : 
-* éditer le fichier `/etc/chrony.conf`
-  * [un contenu modèle se trouve ici](./chrony/serveur/chrony.conf)
-  * choisissez le pool de serveurs français sur [le site des serveurs externes de référence](https://www.pool.ntp.org) et ajoutez le à la configuration
-* [ouvrir le port utilisé par NTP](../../cours/procedures.md#interagir-avec-le-firewall)
-  * c'est le port 123/UDP
-* démarrer le service `chronyd`
-  * `sudo systemctl start chronyd`
-* vérifier l'état de la synchronisation NTP
-  * `chronyc sources`
-  * `chronyc tracking`
-
-Sur toutes les autres machines : 
-* éditer le fichier `/etc/chrony.conf`
-  * [un contenu modèle se trouve ici](./chrony/client/chrony.conf)
-* [ouvrir le port utilisé par NTP](../../cours/procedures.md#interagir-avec-le-firewall)
-  * c'est le port 123/UDP
-* démarrer le service `chronyd`
-  * `sudo systemctl start chronyd`
-* vérifier l'état de la synchronisation NTP
-
+  Machines | Server1 | Client1 | DHCP 
+--- | --- | --- | --- |
+Reference ID | `05C4A08B (ip139.ip-5-196-160.eu)` | `0A06CA0A (server1.tp6.b1)` | `0A06CA0A (server1.tp6.b1)` | référence et nom de où les vm sont connectées
+Stratum | `3` | `4` |  `4` | nombre de saut
+Ref time (UTC) | `Fri Mar 15 17:25:21 2019` | `Fri Mar 15 17:25:30 2019` | `Fri Mar 15 17:25:26 2019` | heure de la dernière mesure
+System time | `0.000927681 seconds fast of NTP time` |  `0.000743395 seconds slow of NTP time` | `0.000888403 seconds fast of NTP time` | correction de l'heure du aux différents saut et autre
+Last offset | `+0.002387839 seconds` | `-0.001347712 seconds` | `-0.000499424 seconds` | décalage estimé lors de la dernière maj de l'horloge
+RMS offset | `0.002262098 seconds` | `0.529418588 seconds` | `0.006499424 seconds` | moyenne à long terme de la valeur de décalage
+Frequency | `3.558 ppm slow` | `9.011 ppm slow` | `0.372 ppm fast` | vitesse à laquelle l'horloge système serait erronée su chronyd ne la corrigeaut pas
+Residual fred | `+0.014 ppm` | `-3.228 ppm` | `-0.010 ppm` | j'ai pas bien compris là
+Skew | `3.746 ppm` | `26.287 ppm` | `11.292 ppm`| estimation de la limite de l'erruer sur la fréquence
+Root delay | `0.062375706 seconds` | `0.121448161 seconds` | `0.128378615 seconds` | délais du chemin réseau vers l'ordiateur qui donne l'heure (ici server1.tp6.b1)
+Root disperson | ` 0.006919123 seconds` | `0.003123883 seconds` | ` 0.003269079 seconds` | délais du chemin vers l'ordiateur qui donne l'heure (ici server1.tp6.b1)
+Update interval | `388.9 seconds` | `130.5 seconds` | `150.0 seconds` | depuis quand il est allumé
+Leap status | `Normal` | `Normal` | `Normal` | statut de l'intercalaire
 ---
 
 # Bilan
