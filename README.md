@@ -221,8 +221,8 @@ Juste histoire de mettre sur le MD, je relance tout, j'oublie pas de start nginx
   * `sudo chronyc sources`
   * `sudo chronyc tracking`
 
-  Machines | Server1 | Client1 | DHCP 
---- | --- | --- | --- |
+  Machines | Server1 | Client1 | DHCP | Explication
+--- | --- | --- | --- | --- |
 Reference ID | `05C4A08B (ip139.ip-5-196-160.eu)` | `0A06CA0A (server1.tp6.b1)` | `0A06CA0A (server1.tp6.b1)` | référence et nom de où les vm sont connectées
 Stratum | `3` | `4` |  `4` | nombre de saut
 Ref time (UTC) | `Fri Mar 15 17:25:21 2019` | `Fri Mar 15 17:25:30 2019` | `Fri Mar 15 17:25:26 2019` | heure de la dernière mesure
@@ -235,7 +235,7 @@ Skew | `3.746 ppm` | `26.287 ppm` | `11.292 ppm`| estimation de la limite de l'e
 Root delay | `0.062375706 seconds` | `0.121448161 seconds` | `0.128378615 seconds` | délais du chemin réseau vers l'ordiateur qui donne l'heure (ici server1.tp6.b1)
 Root disperson | ` 0.006919123 seconds` | `0.003123883 seconds` | ` 0.003269079 seconds` | délais du chemin vers l'ordiateur qui donne l'heure (ici server1.tp6.b1)
 Update interval | `388.9 seconds` | `130.5 seconds` | `150.0 seconds` | depuis quand il est allumé
-Leap status | `Normal` | `Normal` | `Normal` | statut de l'intercalaire
+Leap status | `Normal` | `Normal` | `Normal` | statut de l'intercalaire 
 ---
 
 # Bilan
