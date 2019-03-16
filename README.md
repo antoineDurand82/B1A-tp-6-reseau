@@ -255,30 +255,8 @@ Leap status | `Normal` | `Normal` | `Normal` | statut de l'intercalaire
   * qui mettent en place un routage dynamique (OSPF)
   * qui fournissent un accès WAN (Internet) grâce au NAT
 
-:fire:
-
 # Aller plus loin
 
 Pistes pour aller plus loin (l'ordre n'est pas important), mp si vous voulez + d'infos :
-* Serveur Web
-  * sécuriser le serveur Web avec le protocole TLS
-    * et expliquer un peu la démarche
-  * mettre en place un outil pour gérer son site web
-    * un bête partage FTP peut faire l'affaire
-    * l'utilisateur se connecte pour déposer ses jolies pages html :)
-* Serveurs SSH
-  * sécuriser le(s) serveur(s) SSH avec une authentification par échange de clés
-* DNS
-  * créer un *slave* DNS
-    * le serveur qu'on a là c'est un *master*
-  * mettre en place une interface graphique pour gérer le DNS
-    * parce que les fichiers de zone c'est quand même super chiant écrire/modifier
 * Switch
-  * remplacer les switches pourris de GNS par des switch cisco et mettre en place des VLANs
-    * vous pouvez utilisez des IOU L2 pour ça, demandez moi pour + d'infos
-* Routeurs
-  * mettre en place une authentification MD5 pour OSPF
-  * utiliser LACP pour agréger deux interfaces réseau 
-    * tolérance de panne (si un câble lâche, on est toujours bon)
-    * débit plus haut, nombre de connexions simultanées augmenté
-      * attention avec ça, c'est pas aussi bête que doubler le débit, nan nan. Mp pour + d'infos
+    * J'ai réussi à installer les switch de cisco et à les faire fonctionner par gns, mais je n'ai pas réussi à les configs :/
